@@ -1,0 +1,30 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        display: Design
+        instructions: 'Configure the design of your site'
+        fields:
+          -
+            handle: business_name
+            field:
+              type: text
+              display: 'Business Name'
+              instructions: 'This name is used throughout the site, like the navigation'
+              validate:
+                - required
+          -
+            handle: galleries_layout
+            field:
+              options:
+                -
+                  key: offset
+                  value: Offset
+                -
+                  key: column
+                  value: Column
+              default: offset
+              type: button_group
+              display: 'Galleries Layout'
+              instructions: "The layout type of the galleries' overview"

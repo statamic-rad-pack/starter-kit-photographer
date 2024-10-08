@@ -1,0 +1,57 @@
+---
+show_filters: true
+---
+
+{{ if entries }}
+
+    {{ if show_filters }}
+        <div class="sticky z-10 flex justify-start -ml-2 top-8 sm:top-48">
+            <a-components.category-filter />
+        </div>
+    {{ /if }}
+
+    {{# Simple one-column grid for mobile #}}
+    <div class="grid grid-cols-1 gap-y-8 sm:hidden {{ show_filters ?= 'mt-8' }}">
+        {{ entries }}
+            <a-components.gallery-card
+                :image="preview_image"
+                :$title
+                :$url
+                :$categories
+            />
+        {{ /entries }}
+    </div>
+
+    {{# Two-column grid for desktop #}}
+    <div class="hidden sm:grid sm:grid-cols-2 sm:gap-x-16 lg:gap-x-36 2xl:gap-x-48 {{ show_filters ?= 'mt-8' }}">
+        {{ _entries = entries | group_by_even_odd }}
+        {{ _offset = settings:galleries_layout == 'offset' }}
+
+        {{ _entries }}
+            <div class="flex flex-col sm:gap-y-16 lg:gap-y-36 2xl:gap-y-48">
+                {{ even }}
+                    <a-components.gallery-card
+                        :image="preview_image"
+                        :$title
+                        :$url
+                        :$categories
+                        :align-end="_offset ? (index | mod(2)) : true"
+                    />
+                {{ /even }}
+            </div>
+
+            <div class="flex flex-col sm:gap-y-16 lg:gap-y-36 2xl:gap-y-48 {{ _offset ?= 'sm:mt-16 lg:mt-36 2xl:mt-48' }}">
+                {{ odd }}
+                    <a-components.gallery-card
+                        :image="preview_image"
+                        :$title
+                        :$url
+                        :$categories
+                        :align-end="_offset ? (index | mod(2)) : false"
+                    />
+                {{ /odd }}
+            </div>
+        {{ /_entries }}
+    </div>
+
+{{ /if }}

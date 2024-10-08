@@ -1,0 +1,29 @@
+{
+  "resources/css/site.css": {
+    "file": "assets/site-fPqPv0Yx.css",
+    "src": "resources/css/site.css",
+    "isEntry": true
+  },
+  "resources/fonts/Inter-Italic-VariableFont_opsz,wght.woff2": {
+    "file": "assets/Inter-Italic-VariableFont_opsz_wght-C9UHaEYJ.woff2",
+    "src": "resources/fonts/Inter-Italic-VariableFont_opsz,wght.woff2"
+  },
+  "resources/fonts/Inter-VariableFont_opsz,wght.woff2": {
+    "file": "assets/Inter-VariableFont_opsz_wght-BrXsWJWV.woff2",
+    "src": "resources/fonts/Inter-VariableFont_opsz,wght.woff2"
+  },
+  "resources/fonts/Newsreader-Italic-VariableFont_opsz,wght.woff2": {
+    "file": "assets/Newsreader-Italic-VariableFont_opsz_wght-D237IUBf.woff2",
+    "src": "resources/fonts/Newsreader-Italic-VariableFont_opsz,wght.woff2"
+  },
+  "resources/fonts/Newsreader-VariableFont_opsz,wght.woff2": {
+    "file": "assets/Newsreader-VariableFont_opsz_wght-Clogk-vM.woff2",
+    "src": "resources/fonts/Newsreader-VariableFont_opsz,wght.woff2"
+  },
+  "resources/js/site.js": {
+    "file": "assets/site-By3sTBxi.js",
+    "name": "site",
+    "src": "resources/js/site.js",
+    "isEntry": true
+  }
+}

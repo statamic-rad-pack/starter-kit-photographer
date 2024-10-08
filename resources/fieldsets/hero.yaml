@@ -1,0 +1,19 @@
+title: Hero
+fields:
+  -
+    handle: image
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Image
+  -
+    handle: title
+    field:
+      buttons:
+        - italic
+      fullscreen: false
+      allow_source: false
+      remove_empty_nodes: trim
+      type: bard
+      display: Title

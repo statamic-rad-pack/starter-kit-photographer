@@ -1,0 +1,19 @@
+<div class="flex items-start gap-x-3 sm:w-3/4 {{ align-end ?= 'sm:self-end' }}">
+
+    <a href="{{ url }}" class="flex flex-col gap-y-4 group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-black">
+        {{ responsive:image alt="{image:alt}" width="1200" class="transition group-hover:opacity-80" }}
+        <div class="space-y-2">
+            <h2 class="font-serif text-3xl lg:text-4xl group-hover:line-through">{{ title }}</h2>
+        </div>
+    </a>
+
+    {{ if categories }}
+        <p class="self-end text-xs uppercase tracking-wider rotate-180 pt-[3.2rem] lg:pt-[3.5rem] [writing-mode:vertical-lr]">
+            {{ categories }}
+                <a href="{{ url }}" class="hover:line-through focus:outline-none focus-visible:ring-1 focus-visible:ring-black">{{ title }}</a>
+                {{ ! last ?= '/' }}
+            {{ /categories }}
+        </p>
+    {{ /if }}
+
+</div>

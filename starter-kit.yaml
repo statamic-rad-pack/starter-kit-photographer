@@ -1,0 +1,33 @@
+export_paths:
+  - app/Livewire
+  - app/Modifiers
+  - app/Providers
+  - config/filesystems.php
+  - config/statamic/bard_texstyle.php
+  - config/statamic/protect.php
+  - config/statamic/responsive-images.php
+  - content
+  - lang/en/strings.php
+  - public/assets
+  - public/build
+  - public/private-galleries
+  - resources/blueprints
+  - resources/css
+  - resources/fieldsets
+  - resources/fonts
+  - resources/forms
+  - resources/js
+  - resources/views
+  - package.json
+  - postcss.config.js
+  - README.md
+  - tailwind.config.js
+  - vite.config.js
+dependencies:
+  aerni/zipper: ^2.4
+  gehrisandro/tailwind-merge-laravel: ^1.2
+  jacksleight/statamic-bard-texstyle: ^3.3
+  jonassiewertsen/statamic-livewire: ^3.8
+  livewire/livewire: ^3.5
+  spatie/statamic-responsive-images: ^5.0
+  stillat/antlers-components: ^2.3

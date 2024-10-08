@@ -1,0 +1,23 @@
+{{#
+	@name Hero
+	@desc The hero page builder block
+    @set pages.page_builder.hero
+#}}
+
+<!-- /page_builder/blocks/_hero.antlers.html -->
+{{ if image }}
+    <section class="first:-mt-[4.5rem] sm:first:-mt-24">
+        <div class="px-2 overflow-hidden first:pt-2 sm:px-3 sm:first:pt-3">
+            {{ responsive:image alt="{image:alt}" ratio="1/1" md:ratio="3/1" 2xl:ratio="4/1" class="w-full" }}
+        </div>
+    </section>
+{{ /if }}
+
+{{ if title }}
+    <section class="fluid-container">
+        <div class="sm:w-[80%] mx-auto">
+            <h1 class="font-serif text-4xl leading-tight text-center md:text-5xl md:leading-tight xl:text-7xl xl:leading-tight">{{ title | strip_tags('p') }}</h1>
+        </div>
+    </section>
+{{ /if }}
+<!-- End: /page_builder/blocks/_hero.antlers.html -->

@@ -1,0 +1,20 @@
+{{#
+	@name Image & Text
+	@desc The image & text page builder block
+    @set pages.page_builder.image_text
+#}}
+
+<!-- /page_builder/blocks/_image_text.antlers.html -->
+<section class="fluid-container first:mt-0 sm:first:mt-8 xl:first:mt-12 2xl:first:mt-24">
+
+    <div class="grid max-w-2xl grid-cols-1 mx-auto lg:max-w-none lg:grid-cols-5 gap-y-12 lg:gap-x-16 xl:gap-x-24 2xl:gap-x-36">
+        <div class="max-w-md lg:max-w-none lg:col-span-2">
+            {{ responsive:image alt="{image:alt}" width="1000" ratio="4/5" class="w-full" }}
+        </div>
+        <div class="max-w-3xl lg:col-span-3 lg:mt-16 xl:mt-24 2xl:mt-36">
+            {{ text }}
+        </div>
+    </div>
+
+</section>
+<!-- End: /page_builder/blocks/_image_text.antlers.html -->

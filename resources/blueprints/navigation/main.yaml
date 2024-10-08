@@ -1,0 +1,12 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: cta
+            field:
+              type: toggle
+              display: 'Call to Action'
+              instructions: 'Style this item as a button'

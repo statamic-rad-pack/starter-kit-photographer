@@ -1,0 +1,22 @@
+tree:
+  -
+    id: 785af8f8-b1b9-4709-9182-8131aed30956
+    title: Left
+    children:
+      -
+        id: 2a628b1f-a76a-48af-8155-4d3a871ec41a
+        title: Instagram
+        url: 'https://instagram.com'
+  -
+    id: e95f8b70-220a-4c97-aca6-0e01c0bf4ae0
+    title: Right
+    children:
+      -
+        id: 32752c0c-c842-40cf-b3ab-f6bd2f89a4b6
+        entry: c81a9526-cb6f-445e-9aa2-2f1721441f2f
+      -
+        id: 373a1008-22a4-4195-93fc-ddbb51f94f55
+        entry: 1af48660-848c-4d3e-a52b-fe380a26d310
+      -
+        id: 0535715d-3f83-4c17-b566-18df3f21a697
+        entry: ce3c5959-eb7e-46a1-9c31-266fbb0129c7

@@ -1,0 +1,73 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: package
+            field:
+              type: select
+              display: Package
+              validate:
+                - required
+              options:
+                -
+                  key: family
+                  value: Family
+                -
+                  key: engagement
+                  value: Engagement
+                -
+                  key: wedding
+                  value: Wedding
+                -
+                  key: corporate
+                  value: Corporate
+              width: 50
+          -
+            handle: spacer
+            field:
+              type: spacer
+              display: Spacer
+              width: 50
+          -
+            handle: first_name
+            field:
+              type: text
+              display: 'First Name'
+              validate:
+                - required
+              width: 50
+          -
+            handle: last_name
+            field:
+              type: text
+              display: 'Last Name'
+              width: 50
+              validate:
+                - required
+          -
+            handle: email
+            field:
+              input_type: email
+              type: text
+              display: Email
+              width: 50
+              validate:
+                - required
+                - email
+          -
+            handle: phone
+            field:
+              input_type: tel
+              type: text
+              display: Phone
+              width: 50
+          -
+            handle: message
+            field:
+              type: textarea
+              display: Message
+              validate:
+                - required

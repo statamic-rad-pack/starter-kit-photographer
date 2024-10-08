@@ -1,0 +1,54 @@
+title: Gallery
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: images
+            field:
+              container: assets
+              type: assets
+              display: Images
+              validate:
+                - required
+                - image
+              dynamic: slug
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: preview_image
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: 'Preview Image'
+              dynamic: slug
+              validate:
+                - image
+              listable: true
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Categories
+              mode: select

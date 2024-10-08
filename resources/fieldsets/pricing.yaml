@@ -1,0 +1,46 @@
+title: Pricing
+fields:
+  -
+    handle: tiers
+    field:
+      min_rows: 1
+      add_row: 'Add tier'
+      type: grid
+      display: Tiers
+      validate:
+        - required
+      mode: stacked
+      instructions: 'Add any number of pricing tiers'
+      fullscreen: false
+      fields:
+        -
+          handle: title
+          field:
+            type: text
+            display: Title
+            validate:
+              - required
+            width: 75
+        -
+          handle: price
+          field:
+            type: integer
+            display: Price
+            validate:
+              - required
+            prepend: $
+            width: 25
+        -
+          handle: description
+          field:
+            type: textarea
+            display: Description
+            validate:
+              - required
+        -
+          handle: features
+          field:
+            type: list
+            display: Features
+            validate:
+              - required

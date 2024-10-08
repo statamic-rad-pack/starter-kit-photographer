@@ -1,0 +1,11 @@
+title: Form
+fields:
+  -
+    handle: form
+    field:
+      max_items: 1
+      mode: select
+      type: form
+      display: Form
+      validate:
+        - required

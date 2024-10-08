@@ -1,0 +1,29 @@
+title: Bio
+fields:
+  -
+    handle: portrait
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Portrait
+      validate:
+        - required
+      width: 50
+  -
+    handle: signature
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Signature
+      validate:
+        - required
+      width: 50
+  -
+    handle: text
+    field:
+      type: textarea
+      display: Text
+      validate:
+        - required

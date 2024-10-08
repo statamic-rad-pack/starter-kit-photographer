@@ -1,0 +1,53 @@
+title: 'Private Gallery'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: assets
+            field:
+              container: private_galleries
+              type: assets
+              display: Images
+              dynamic: id
+              validate:
+                - image
+          -
+            handle: likes
+            field:
+              container: private_galleries
+              type: assets
+              display: Likes
+              visibility: read_only
+              dynamic: id
+  settings:
+    display: Settings
+    sections:
+      -
+        display: Settings
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: download
+            field:
+              type: toggle
+              display: 'Allow Download'
+              default: true
+          -
+            handle: password
+            field:
+              type: text
+              display: Password
+              instructions: 'Set a password to protect this gallery'

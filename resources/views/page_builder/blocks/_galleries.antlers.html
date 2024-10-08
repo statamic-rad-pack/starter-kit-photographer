@@ -1,0 +1,17 @@
+{{#
+    @name Galleries
+    @desc The galleries page builder block.
+    @set page.page_builder.galleries
+#}}
+
+<!-- /page_builder/blocks/_galleries.antlers.html -->
+{{# Get the selected entries or query the gallery collection. #}}
+{{ _entries = (block:galleries | count)
+    ? (block:galleries | limit(block:limit))
+    : {%collection:galleries :limit="block:limit"}
+}}
+
+<section class="fluid-container">
+    <a-components.galleries-grid :entries="_entries" :show_filters="block:show_filters" />
+</section>
+<!-- End: /page_builder/blocks/_galleries.antlers.html -->

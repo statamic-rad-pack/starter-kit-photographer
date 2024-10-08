@@ -1,0 +1,38 @@
+@layer components {
+
+    .fluid-container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: theme('screens.2xl');
+
+        /* Use safe-area-inset together with default padding for Apple devices with a notch. */
+        padding-left: calc(env(safe-area-inset-left, 0rem) + theme('padding.6'));
+        padding-right: calc(env(safe-area-inset-right, 0rem) + theme('padding.6'));
+    }
+
+    .full-width-container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+
+        /* Use safe-area-inset together with default padding for Apple devices with a notch. */
+        padding-left: calc(env(safe-area-inset-left, 0rem) + theme('padding.6'));
+        padding-right: calc(env(safe-area-inset-right, 0rem) + theme('padding.6'));
+    }
+
+    @screen sm {
+        .fluid-container {
+            /* Use safe-area-inset together with default padding for Apple devices with a notch. */
+            padding-left: calc(env(safe-area-inset-left, 0rem) + theme('padding.10'));
+            padding-right: calc(env(safe-area-inset-right, 0rem) + theme('padding.10'));
+        }
+
+        .full-width-container {
+            /* Use safe-area-inset together with default padding for Apple devices with a notch. */
+            padding-left: calc(env(safe-area-inset-left, 0rem) + theme('padding.10'));
+            padding-right: calc(env(safe-area-inset-right, 0rem) + theme('padding.10'));
+        }
+    }
+
+}

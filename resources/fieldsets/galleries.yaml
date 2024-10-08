@@ -1,0 +1,43 @@
+title: Galleries
+fields:
+  -
+    handle: query
+    field:
+      options:
+        all: All
+        selection: Selection
+      default: all
+      display: Query
+      type: button_group
+      validate:
+        - sometimes
+        - required
+      instructions: 'Show all or a selection of galleries'
+      always_save: false
+      width: 50
+  -
+    handle: limit
+    field:
+      type: integer
+      display: Limit
+      instructions: 'Limit the number of shown galleries'
+      width: 50
+  -
+    handle: galleries
+    field:
+      collections:
+        - galleries
+      type: entries
+      display: Galleries
+      instructions: 'Select the galleries to show'
+      if:
+        query: 'equals selection'
+      validate:
+        - required
+        - sometimes
+  -
+    handle: show_filters
+    field:
+      type: toggle
+      display: 'Show Filters'
+      instructions: 'Show the category filters for this block'

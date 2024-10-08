@@ -1,0 +1,18 @@
+<div class="px-8 py-10 bg-gray-100 border border-gray-200 stack stack-8 rounded-xl">
+    <h3 class="font-serif text-3xl xl:text-4xl">{{ title }}</h3>
+    <p class="text-sm font-medium xl:text-base stack-space-4">{{ description }}</p>
+    <ul class="space-y-3">
+        {{ features }}
+            <li class="flex items-center text-sm font-medium gap-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                {{ value }}
+            </li>
+        {{ /features }}
+    </ul>
+    <div class="flex flex-col stack-space-8">
+        <span class="text-xs font-medium">{{ trans key="From" }}</span>
+        <span class="mt-0.5 text-2xl">${{ price }}</span>
+    </div>
+</div>

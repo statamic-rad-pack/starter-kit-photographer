@@ -1,0 +1,15 @@
+title: 'Private Galleries'
+template: private_galleries/template
+layout: private_galleries/layout
+revisions: false
+route: '/private/{id}'
+slugs: false
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

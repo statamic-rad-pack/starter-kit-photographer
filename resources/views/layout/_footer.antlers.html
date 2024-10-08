@@ -1,0 +1,22 @@
+{{#
+	@name Footer
+	@desc The site's footer rendered on each page.
+#}}
+
+<!-- /layout/_footer.antlers.html -->
+<footer class="mb-6 sm:mb-8 full-width-container">
+    <div class="flex flex-wrap items-center justify-between pt-4 border-t sm:border-none border-t-black gap-x-16 gap-y-3">
+        {{ nav:footer }}
+            {{ if depth === 1 }}
+                {{ if children }}
+                    <div class="flex flex-wrap gap-x-6 gap-y-3">
+                        {{ children}}
+                            <a href="{{ permalink }}" class="text-sm font-medium select-none motion-safe:transition focus:outline-none hover:line-through focus-visible:rounded focus-visible:ring-1 focus-visible:ring-black">{{ title }}</a>
+                        {{ /children }}
+                    </div>
+                {{ /if }}
+            {{ /if }}
+        {{ /nav:footer}}
+    </div>
+</footer>
+<!-- End: /layout/_footer.antlers.html -->

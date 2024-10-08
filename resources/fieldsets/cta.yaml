@@ -1,0 +1,16 @@
+title: 'Call to Action'
+fields:
+  -
+    handle: text
+    field:
+      buttons:
+        - italic
+        - anchor
+      fullscreen: false
+      allow_source: false
+      remove_empty_nodes: trim
+      type: bard
+      display: Text
+      validate:
+        - required
+      bts_defaults: cta

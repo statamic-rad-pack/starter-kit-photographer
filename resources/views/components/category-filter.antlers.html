@@ -1,0 +1,55 @@
+<div
+    x-data="{ open: false }"
+    x-trap="open"
+    x-cloak
+    @keydown.esc="open = false"
+    class="flex flex-col-reverse items-center gap-2 isolate sm:flex-row"
+>
+
+    <button
+        x-on:click="open = !open"
+        class="z-10 bg-white border rounded-full border-black text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+    >
+
+        {{# The open button #}}
+        <div x-show="!open" class="inline-flex items-center justify-center p-1">
+            <div class="flex items-center justify-center w-6 h-6 text-white rounded-full bg-black">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                </svg>
+            </div>
+            <span class="pl-2 pr-2.5 text-sm font-medium">
+                {{ trans key="Categories" }}
+            </span>
+        </div>
+
+        {{# The close button #}}
+        <div x-show="open" class="inline-flex items-center justify-center p-1">
+            <div class="flex items-center justify-center w-6 h-6 text-white rounded-full bg-black">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path d="M3.75 7.25a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Z" />
+                </svg>
+            </div>
+            <span class="pl-2 pr-2.5 text-sm font-medium">
+                {{ trans key="Close" }}
+            </span>
+        </div>
+
+    </button>
+
+    <div
+        class="absolute flex flex-wrap items-center px-8 py-6 text-white top-12 -inset-x-6 gap-x-6 gap-y-4 sm:static sm:h-full sm:px-4 sm:py-0 sm:rounded-full sm:gap-x-3 sm:gap-y-1 bg-black"
+        x-show="open"
+        x-transition:enter="transition ease-out"
+        x-transition:enter-start="opacity-0 -translate-y-1 sm:translate-y-0 sm:translate-x-2"
+        x-transition:enter-end="opacity-100 translate-y-0 sm:translate-x-0"
+        x-transition:leave="transition ease-out"
+        x-transition:leave-start="opacity-100 translate-y-0 sm:translate-x-0"
+        x-transition:leave-end="opacity-0 -translate-y-1 sm:translate-y-0 sm:translate-x-2"
+    >
+        {{ taxonomy:categories collection="galleries" }}
+            <a href="{{ permalink }}" class="text-base font-medium rounded sm:text-sm hover:line-through focus:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black">{{ title }}</a>
+        {{ /taxonomy:categories }}
+    </div>
+
+</div>

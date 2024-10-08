@@ -1,0 +1,25 @@
+title: 'Image & Text'
+fields:
+  -
+    handle: image
+    field:
+      max_files: 1
+      container: assets
+      type: assets
+      display: Image
+      validate:
+        - required
+  -
+    handle: text
+    field:
+      buttons:
+        - h1
+        - italic
+        - anchor
+      remove_empty_nodes: true
+      type: bard
+      display: Text
+      validate:
+        - required
+      fullscreen: false
+      allow_source: false

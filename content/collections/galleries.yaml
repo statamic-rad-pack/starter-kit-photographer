@@ -1,0 +1,20 @@
+title: Galleries
+template: gallery
+layout: layout
+mount: 0acdbdb6-f09f-46c8-8c02-ece71fe392eb
+taxonomies:
+  - categories
+revisions: false
+route: '/{mount}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true
+structure:
+  root: false
+  max_depth: 1

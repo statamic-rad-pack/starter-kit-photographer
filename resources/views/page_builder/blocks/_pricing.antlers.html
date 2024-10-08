@@ -1,0 +1,17 @@
+{{#
+	@name Pricing
+	@desc The pricing page builder block
+    @set pages.page_builder.pricing
+#}}
+
+<!-- /page_builder/blocks/_pricing.antlers.html -->
+<section class="max-w-6xl fluid-container">
+
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {{ tiers }}
+            <a-components.pricing-card :$title :$description :$features :$price />
+        {{ /tiers }}
+    </div>
+
+</section>
+<!-- End: /page_builder/blocks/_pricing.antlers.html -->

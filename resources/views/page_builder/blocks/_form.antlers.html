@@ -1,0 +1,96 @@
+{{#
+    @name Form
+    @desc The form page builder block.
+    @set page.page_builder.form
+#}}
+
+<!-- /page_builder/blocks/_form.antlers.html -->
+{{ if form:handle }}
+    <section class="max-w-6xl fluid-container">
+        <div class="span-content md:col-start-[col-3] md:col-span-8">
+            {{ form:create :in="form:handle" js="alpine:form" attr:x-ref="form" }}
+                <div x-data="form" class="flex flex-col gap-8" x-cloak>
+
+                    {{# Error messages #}}
+                    <template x-if="form.hasErrors && submitted">
+                        <div id="summary" role="group" class="p-6 border border-red-600 rounded bg-red-50">
+                            <h3 class="mb-3 text-base font-medium text-red-700">{{ trans:strings.form_error }}</h3>
+                            <ul class="space-y-1 list-disc list-inside marker:text-red-600">
+                                <template x-for="(error, index) in form.errors">
+                                    <li>
+                                        <a :href="`#${index}`" @click.prevent="$focus.focus(document.querySelector(`#${index}`))" x-text="error" class="-ml-1 text-sm font-medium text-red-600 underline underline-offset-2 focus:outline-red-600"></a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </template>
+
+                    {{# Success notifications. #}}
+                    <template x-if="success">
+                        <div class="p-6 border border-green-600 rounded bg-green-50">
+                            <h3 class="text-base font-medium text-green-700">{{ trans:strings.form_success }}</h3>
+                        </div>
+                    </template>
+
+                    {{# Honeypot spam protection #}}
+                    <input class="hidden" id="{{ honeypot }}" type="text" name="{{ honeypot }}" x-model="form.{{ honeypot }}" tabindex="-1" autocomplete="off"/>
+
+                    {{ sections }}
+                        <fieldset class="grid w-full gap-8 md:grid-cols-12">
+                            {{ fields }}
+                                <template x-if="{{ show_field }}">
+                                    <div class="
+                                        flex flex-col gap-y-2
+                                        {{ input_type == 'hidden' ?= 'hidden' }}
+                                        {{ type == 'spacer' ?= 'hidden md:flex' }}
+                                        {{ switch(
+                                            (width == '25') => 'md:col-span-3',
+                                            (width == '33') => 'md:col-span-4',
+                                            (width == '50') => 'md:col-span-6',
+                                            (width == '66') => 'md:col-span-8',
+                                            (width == '75') => 'md:col-span-9',
+                                            () => 'md:col-span-12'
+                                        )}}
+                                    ">
+                                        {{ unless type == 'spacer' }}
+                                            <label class="text-sm font-medium" for="{{ handle }}">
+                                                {{ trans :key="display" }}
+                                                {{ unless validate | contains('required') || validate | contains('accepted') }}
+                                                    <span class="text-xs opacity-60">({{ trans key="Optional" }})</span>
+                                                {{ /unless }}
+                                            </label>
+                                        {{ /unless }}
+
+                                        {{ field }}
+
+                                        <template x-if="form.invalid('{{ handle }}')">
+                                            <span class="text-sm font-medium text-red-600" x-text="form.errors.{{ handle }}"></span>
+                                        </template>
+                                    </div>
+                                </template>
+                            {{ /fields }}
+                        </fieldset>
+                    {{ /sections }}
+
+                    {{# Submit button, disabled on processing. #}}
+                    <div class="flex justify-end w-full">
+                        <div class="flex justify-end md:col-span-12">
+                            <button
+                                @click.prevent="submit"
+                                :disabled="form.processing"
+                                class="inline-flex items-center px-5 py-2 text-sm font-medium text-white rounded-full select-none group gap-x-1 bg-black hover:bg-black/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                                :class="{ 'opacity-25 cursor-default': form.processing }"
+                            >
+                                {{ trans:strings.form_send }}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="transition size-4 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5  -mr-0.5">
+                                    <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {{ /form:create }}
+        </div>
+    </section>
+{{ /if }}
+<!-- End: /page_builder/blocks/_form.antlers.html -->

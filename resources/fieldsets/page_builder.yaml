@@ -1,0 +1,85 @@
+title: 'Page Builder'
+fields:
+  -
+    handle: page_builder
+    field:
+      type: replicator
+      localizable: true
+      collapse: accordion
+      listable: false
+      display: 'Page Builder'
+      instructions: 'Compose the page with the available components'
+      previews: false
+      always_save: false
+      fullscreen: false
+      sets:
+        collections:
+          display: Collections
+          instructions: 'Blocks for collections'
+          icon: file-content-list
+          sets:
+            galleries:
+              display: Galleries
+              instructions: 'Show your galleries'
+              icon: media-image-picture-gallery
+              fields:
+                -
+                  import: galleries
+        interactive:
+          display: Interactive
+          instructions: 'Blocks for interactive elements'
+          icon: arrow-roadmap-path-flow
+          sets:
+            cta:
+              display: 'Call to Action'
+              instructions: 'Encourage users to take action'
+              icon: share-mega-phone
+              fields:
+                -
+                  import: cta
+            form:
+              display: Form
+              instructions: 'Display a form'
+              icon: form-text-field
+              fields:
+                -
+                  import: form
+        text_images:
+          display: 'Text & Images'
+          instructions: 'Blocks with text and image'
+          icon: text-formatting-initial-letter
+          sets:
+            article:
+              display: Article
+              icon: text-formatting-initial-letter
+              fields:
+                -
+                  import: article
+            bio:
+              display: Bio
+              instructions: 'Write a short blurb about yourself'
+              icon: text-formatting-input-signature
+              fields:
+                -
+                  import: bio
+            hero:
+              display: Hero
+              instructions: 'Perfect for the top of a page'
+              icon: align-object-top
+              fields:
+                -
+                  import: hero
+            image_text:
+              display: 'Image & Text'
+              instructions: 'Write text next to an image'
+              icon: text-formatting-image-left
+              fields:
+                -
+                  import: image_text
+            pricing:
+              display: Pricing
+              instructions: 'Show your pricing tiers'
+              icon: money-cashier-price-tag
+              fields:
+                -
+                  import: pricing
