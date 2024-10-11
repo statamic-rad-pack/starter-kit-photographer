@@ -11,9 +11,19 @@ tabs:
             field:
               type: text
               display: 'Business Name'
-              instructions: 'This name is used throughout the site, like the navigation'
+              instructions: 'This name is used throughout the site'
               validate:
                 - required
+              width: 50
+          -
+            handle: logo
+            field:
+              max_files: 1
+              container: assets
+              type: assets
+              display: Logo
+              width: 50
+              instructions: "The logo for your site's navigation"
           -
             handle: galleries_layout
             field:
@@ -27,4 +37,88 @@ tabs:
               default: offset
               type: button_group
               display: 'Galleries Layout'
-              instructions: "The layout type of the galleries' overview"
+              instructions: 'The layout type of your galleries overview'
+      -
+        display: 'Private Galleries'
+        instructions: 'Configure your private galleries'
+        fields:
+          -
+            handle: lowres
+            field:
+              default: '1000'
+              type: integer
+              display: 'Low Resolution'
+              width: 50
+              instructions: 'Resize images to this width when the setting is enabled'
+              append: px
+          -
+            handle: watermark
+            field:
+              type: group
+              display: Watermark
+              fullscreen: false
+              instructions: 'The settings for your watermark'
+              fields:
+                -
+                  handle: mark
+                  field:
+                    max_files: 1
+                    container: assets
+                    type: assets
+                    display: Mark
+                    width: 50
+                    instructions: 'An image of your watermark'
+                    validate:
+                      - image
+                -
+                  handle: markpos
+                  field:
+                    options:
+                      -
+                        key: top-left
+                        value: 'Top Left'
+                      -
+                        key: top
+                        value: Top
+                      -
+                        key: top-right
+                        value: 'Top Right'
+                      -
+                        key: left
+                        value: Left
+                      -
+                        key: center
+                        value: Center
+                      -
+                        key: right
+                        value: Right
+                      -
+                        key: bottom-left
+                        value: 'Bottom Left'
+                      -
+                        key: bottom
+                        value: Bottom
+                      -
+                        key: bottom-right
+                        value: 'Bottom Right'
+                    type: select
+                    display: Position
+                    default: bottom-right
+                    width: 50
+                    instructions: 'The position of the watermark'
+                -
+                  handle: markpad
+                  field:
+                    default: 5
+                    type: range
+                    display: Padding
+                    width: 50
+                    instructions: "Relative to the image's width. [Learn more](https://glide.thephpleague.com/2.0/api/watermarks/#padding-markpad)."
+                -
+                  handle: markw
+                  field:
+                    default: 25
+                    type: range
+                    display: Width
+                    width: 50
+                    instructions: "Relative to the image's width. [Learn more](https://glide.thephpleague.com/2.0/api/watermarks/#width-markw)."

@@ -28,7 +28,7 @@ class Gallery extends Component
     #[Computed]
     public function assets(array $selection = []): AssetCollection
     {
-        return $this->entry->assets
+        return $this->entry->processed_images
             ->when($selection, function ($assets) use ($selection) {
                 return $assets->filter(fn ($asset) => in_array($asset->id(), $selection));
             });

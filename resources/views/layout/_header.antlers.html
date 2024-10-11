@@ -7,7 +7,15 @@
 <header>
     <div class="relative z-10 w-full py-4 sm:py-8 isolate">
         <div class="flex items-center justify-between full-width-container">
-            <a href="{{ homepage }}" class="-mb-0.5 font-serif text-2xl font-medium leading-none focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black">{{ settings:business_name }}</a>
+            {{ if settings:logo }}
+                <a href="{{ homepage }}" class="block hover:opacity-70 focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black">
+                    <img src="{{ settings:logo }}" alt="{{ settings:business_name }}" class="object-contain sm:h-full max-w-48">
+                </a>
+            {{ else }}
+                <a href="{{ homepage }}" class="-mb-0.5 font-serif text-2xl font-medium leading-none focus:outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-black">
+                    {{ settings:business_name }}
+                </a>
+            {{ /if }}
             {{ partial:layout/navigation/main }}
         </div>
     </div>

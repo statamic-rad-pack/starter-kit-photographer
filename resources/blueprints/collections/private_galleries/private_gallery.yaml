@@ -21,6 +21,18 @@ tabs:
               dynamic: id
               validate:
                 - image
+              show_set_alt: false
+          -
+            handle: processed_images
+            field:
+              container: private_galleries
+              type: assets
+              display: 'Processed Images'
+              visibility: computed
+              always_save: false
+              if_any:
+                watermark: 'equals true'
+                lowres: 'equals true'
           -
             handle: likes
             field:
@@ -29,25 +41,33 @@ tabs:
               display: Likes
               visibility: read_only
               dynamic: id
-  settings:
-    display: Settings
-    sections:
-      -
-        display: Settings
   sidebar:
     display: Sidebar
     sections:
       -
         fields:
           -
-            handle: download
-            field:
-              type: toggle
-              display: 'Allow Download'
-              default: true
-          -
             handle: password
             field:
               type: text
               display: Password
               instructions: 'Set a password to protect this gallery'
+          -
+            handle: download
+            field:
+              type: toggle
+              display: 'Allow Download'
+              default: true
+              instructions: 'Controls download buttons'
+          -
+            handle: lowres
+            field:
+              type: toggle
+              display: 'Low Resolution'
+              instructions: 'Limit the image resolution'
+          -
+            handle: watermark
+            field:
+              type: toggle
+              display: Watermark
+              instructions: 'Add your watermark to images'

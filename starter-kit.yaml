@@ -1,7 +1,10 @@
 export_paths:
+  - app/Jobs
+  - app/Listeners
   - app/Livewire
   - app/Modifiers
   - app/Providers
+  - bootstrap/providers.php
   - config/filesystems.php
   - config/statamic/bard_texstyle.php
   - config/statamic/protect.php

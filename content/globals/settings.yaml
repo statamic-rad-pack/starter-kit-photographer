@@ -1,4 +1,11 @@
 title: Settings
 data:
   business_name: 'Louise Millan'
+  logo: signature.png
   galleries_layout: offset
+  watermark:
+    mark: watermark.png
+    markpos: bottom-right
+    markpad: 5
+    markw: 50
+  lowres: 1000
