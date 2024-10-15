@@ -12,12 +12,14 @@
         }"
     >
         @foreach($this->assets as $asset)
-            <livewire:gallery-item
-                :key="$asset->id"
-                :id="$asset->id"
-                :downloadEnabled="$this->downloadEnabled"
-                :liked="$this->isLiked($asset->id)"
-            />
+            <div wire:key="{{ $asset->id }}">
+                <livewire:gallery-item
+                    :key="$asset->id"
+                    :id="$asset->id"
+                    :downloadEnabled="$this->downloadEnabled"
+                    :liked="$this->isLiked($asset->id)"
+                />
+            </div>
         @endforeach
     </x-masonry-grid>
 

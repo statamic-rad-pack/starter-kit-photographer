@@ -17,9 +17,11 @@
         @endif
     </div>
 
-    @include('components.image', [
-        'asset' => $this->asset,
-        'width' => 1500,
-    ])
+    <div wire:ignore>
+        @include('components.image', [
+            'asset' => $this->asset,
+            'width' => 1500,
+        ])
+    </div>
 
 </div>
