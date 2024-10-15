@@ -21,7 +21,6 @@ tabs:
               dynamic: id
               validate:
                 - image
-              show_set_alt: false
           -
             handle: processed_images
             field:
@@ -46,6 +45,18 @@ tabs:
     sections:
       -
         fields:
+          -
+            handle: preview_image
+            field:
+              max_files: 1
+              container: private_galleries
+              type: assets
+              display: 'Preview Image'
+              dynamic: id
+              validate:
+                - image
+              show_set_alt: false
+              listable: true
           -
             handle: password
             field:

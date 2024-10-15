@@ -3,9 +3,13 @@ data:
   business_name: 'Louise Millan'
   logo: signature.png
   galleries_layout: offset
+  protected_page_images:
+    - switzerland/boris-baldinger-6ogl3xacolm-unsplash.jpg
+    - portraits/omid-armin-65jdpsttl-0-unsplash.jpg
+    - experimental/egor-litvinov-isibtc93dok-unsplash.jpg
+  lowres: 1000
   watermark:
     mark: watermark.png
     markpos: bottom-right
     markpad: 5
     markw: 50
-  lowres: 1000

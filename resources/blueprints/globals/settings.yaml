@@ -4,7 +4,7 @@ tabs:
     sections:
       -
         display: Design
-        instructions: 'Configure the design of your site'
+        instructions: 'Customize the design of your site'
         fields:
           -
             handle: business_name
@@ -37,7 +37,14 @@ tabs:
               default: offset
               type: button_group
               display: 'Galleries Layout'
-              instructions: 'The layout type of your galleries overview'
+              instructions: 'The layout type of the gallery lists'
+          -
+            handle: protected_page_images
+            field:
+              container: assets
+              type: assets
+              display: 'Protected Page Images'
+              instructions: 'Images to be used on protected pages other than protected galleries'
       -
         display: 'Private Galleries'
         instructions: 'Configure your private galleries'

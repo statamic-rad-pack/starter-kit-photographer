@@ -15,6 +15,10 @@ class ComputedPropertiesProvider extends ServiceProvider
             return $value ?? Arr::first($entry->get('images'));
         });
 
+        Collection::computed('private_galleries', 'preview_image', function ($entry, $value) {
+            return $value ?? Arr::first($entry->get('assets'));
+        });
+
         Collection::computed('private_galleries', 'protect', function ($entry, $value) {
             return $entry->password ? 'password' : null;
         });

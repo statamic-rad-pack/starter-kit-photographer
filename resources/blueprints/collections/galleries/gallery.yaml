@@ -44,6 +44,7 @@ tabs:
               validate:
                 - image
               listable: true
+              show_set_alt: false
           -
             handle: categories
             field:

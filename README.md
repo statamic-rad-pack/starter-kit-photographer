@@ -18,10 +18,11 @@
 - Built with [Livewire](https://livewire.laravel.com/), [Alpine.js](https://github.com/alpinejs/alpine), and [TailwindCSS](https://tailwindcss.com)
 
 ### Private Galleries
-- Password protection
+- Password protection with a beautiful login page
+- Image processing with options for watermark and low-res images
 - Download and like individual images
-- Download a zip of all images or a selection of thereof
-- Zoom
+- Download a zip of all images or a selection thereof
+- Gallery zoom
 
 ## Quick Start
 
