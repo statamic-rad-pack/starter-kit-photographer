@@ -4,7 +4,7 @@ namespace App\Widgets;
 
 use Statamic\Widgets\Widget;
 
-class GettingStartedWithPhotography extends Widget
+class GettingStartedWithPhotographer extends Widget
 {
     /**
      * The HTML that should be shown in the widget.

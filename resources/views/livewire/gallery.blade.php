@@ -12,7 +12,7 @@
         }"
     >
         @foreach($this->assets as $asset)
-            <div wire:key="{{ $asset->id }}">
+            <div wire:key="{{ $asset->id }}" wire:ignore.self>
                 <livewire:gallery-item
                     :key="$asset->id"
                     :id="$asset->id"

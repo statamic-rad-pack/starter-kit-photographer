@@ -1,7 +1,7 @@
 <div class="max-w-md p-0 mx-auto card content" x-data="{ showList: false }">
     <div class="p-6 text-center border-b">
-        <h1 class="mb-0">Welcome to Statamic</h1>
-        <p>Let's get this photography site going — your audience awaits.</p>
+        <h1 class="mb-0">Welcome to Statamic Photographer</h1>
+        <p>Here are some quick shortcuts to the most important areas of the control panel.</p>
     </div>
     <div class="px-6 py-3">
         <a href="{{ cp_route('globals.update', 'settings') }}" class="flex items-start p-2 mb-8 rounded-md hover:bg-blue-100 group">

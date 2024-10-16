@@ -1,6 +1,6 @@
 <!-- statamic:hide --><p align="center"><img src="https://statamic.com/assets/branding/Statamic-Logo-Rad.png" width="100" alt="Statamic Logo" /></p>
 <h1 align="center">
-    Statamic Starter Kit: Photography
+    Statamic Starter Kit: Photographer
 </h1>
 <!-- /statamic:hide -->
 
@@ -31,13 +31,13 @@
 You can create a new site using the [Statamic CLI Tool](https://github.com/statamic/cli):
 
 ```
-statamic new your-site statamic-rad-pack/starter-kit-photography
+statamic new your-site statamic-rad-pack/starter-kit-photographer
 ```
 
 Or you can install manually into a fresh [Statamic installation](https://statamic.dev/installation) by running:
 
 ```
-php please starter-kit:install statamic-rad-pack/starter-kit-photography --clear-site
+php please starter-kit:install statamic-rad-pack/starter-kit-photographer --clear-site
 ```
 
 ### 2. Make a new user

@@ -1,9 +1,9 @@
 {
-    "name": "statamic-rad-pack/starter-kit-photography",
+    "name": "statamic-rad-pack/starter-kit-photographer",
     "extra": {
         "statamic": {
-            "name": "Starter Kit Photography",
-            "description": "Starter Kit Photography starter kit"
+            "name": "Starter Kit Photographer",
+            "description": "Starter Kit Photographer starter kit"
         }
     }
 }
