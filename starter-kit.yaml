@@ -36,3 +36,15 @@ dependencies:
   livewire/livewire: ^3.5
   spatie/statamic-responsive-images: ^5.0
   stillat/antlers-components: ^2.3
+modules:
+  seo:
+    prompt: 'Would you like to install an SEO addon?'
+    options:
+      advanced_seo:
+        label: 'Advanced SEO'
+        dependencies:
+          aerni/advanced-seo: ^2.9
+      seo_pro:
+        label: 'SEO Pro'
+        dependencies:
+          statamic/seo-pro: ^6.3

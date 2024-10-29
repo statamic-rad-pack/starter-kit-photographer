@@ -3,12 +3,12 @@
 	@desc The category term template
 #}}
 
-<main class="outer-stack">
+<main class="outer-grid">
 
     {{ partial:page_builder/blocks/hero }}
 
     <section class="fluid-container">
-        <a-components.galleries-grid />
+        <a-components.galleries-grid :entries="entries | sort('title')" />
     </section>
 
 </main>

@@ -1,0 +1,15 @@
+@layer components {
+
+    .outer-grid {
+        @apply flex flex-col flex-1 gap-y-12 sm:gap-y-16 xl:gap-y-24 2xl:gap-y-36;
+
+        > *:first-child {
+            @apply mt-6 sm:mt-8 xl:mt-12 2xl:mt-24;
+        }
+
+        > *:last-child {
+            @apply mb-16 sm:mb-24 xl:mb-32 2xl:mb-48;
+        }
+    }
+
+}

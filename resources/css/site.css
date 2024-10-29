@@ -2,5 +2,5 @@
 @import "./base/fonts.css";
 @import "tailwindcss/components";
 @import "./components/container.css";
-@import "./components/stack.css";
+@import "./components/grid.css";
 @import "tailwindcss/utilities";

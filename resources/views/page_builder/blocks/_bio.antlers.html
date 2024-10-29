@@ -8,9 +8,9 @@
 <section class="fluid-container">
 
     <div class="flex flex-col items-center gap-y-8 lg:gap-y-12 2xl:gap-y-16">
-        {{ responsive:portrait alt="{portrait:alt}" width="300" ratio="4/5" class="w-24 2xl:w-36" }}
+        {{ responsive:portrait alt="{portrait:alt}" width="300" ratio="4/5" class="w-24 2xl:w-36 {settings:corner_style}" }}
         <p class="sm:w-[80%] max-w-4xl mx-auto font-serif text-xl leading-normal text-center lg:text-2xl lg:leading-normal 2xl:text-3xl 2xl:leading-normal">{{ text }}</p>
-        {{ responsive:signature alt="{signature:alt}" width="500" class="w-48 2xl:w-56" }}
+        {{ responsive:signature alt="{signature:alt}" width="500" class="w-48 2xl:w-56 {settings:corner_style}" }}
     </div>
 
 </section>

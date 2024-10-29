@@ -21,7 +21,7 @@ class GalleryItem extends Component
 
     public bool $liked = false;
 
-    #[Computed]
+    #[Computed(persist: true)]
     public function asset(): Asset
     {
         return \Statamic\Facades\Asset::find($this->id);

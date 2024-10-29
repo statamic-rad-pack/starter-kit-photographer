@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
-use Statamic\Events\EntrySaved;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Jobs\ProcessImages as ProcessImagesJob;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Facades\Cache;
+use Statamic\Events\EntrySaved;
 
 class ProcessImages implements ShouldQueue
 {
@@ -14,11 +16,14 @@ class ProcessImages implements ShouldQueue
             return;
         }
 
-        ProcessImagesJob::dispatch(
-            assets: $event->entry->assets,
-            watermark: $event->entry->watermark,
-            lowres: $event->entry->lowres,
-        );
+        Bus::chain([
+            new ProcessImagesJob(
+                assets: $event->entry->assets,
+                watermark: $event->entry->watermark,
+                lowres: $event->entry->lowres,
+            ),
+            fn () => Cache::forget('processed_images'),
+        ])->dispatch();
     }
 
     protected function shouldProcessImages(EntrySaved $event): bool

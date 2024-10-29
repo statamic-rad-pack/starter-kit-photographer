@@ -5,7 +5,6 @@ fields:
     field:
       type: replicator
       localizable: true
-      collapse: accordion
       listable: false
       display: 'Page Builder'
       instructions: 'Compose the page with the available components'
@@ -25,6 +24,13 @@ fields:
               fields:
                 -
                   import: galleries
+            testimonials:
+              display: Testimonials
+              instructions: 'Show your testimonials'
+              icon: text-formatting-quotation
+              fields:
+                -
+                  import: testimonials
         interactive:
           display: Interactive
           instructions: 'Blocks for interactive elements'
@@ -76,6 +82,13 @@ fields:
               fields:
                 -
                   import: image_text
+            inline_gallery:
+              display: 'Inline Gallery'
+              instructions: 'Create a gallery of images'
+              icon: layout-grid-dots
+              fields:
+                -
+                  import: gallery
             pricing:
               display: Pricing
               instructions: 'Show your pricing tiers'

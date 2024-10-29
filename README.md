@@ -5,12 +5,13 @@
 <!-- /statamic:hide -->
 
 ## Features
-- Galleries collection to show off your work
-- Private galleries to share photo-sessions with your clients
-- Categorize your galleries with the categories taxonomy
+- Show your work with the galleries collection
+- Share photos with private galleries
+- Categorize galleries with the categories taxonomy
 - Interactive categories filter linking to the taxonomy term page
-- Responsive images for fast load times
-- Page builder with blocks for galleries, bio, forms, and more
+- Responsive and lazy-loaded images for fast load times
+- Build trust with client testimonials
+- Page builder with blocks for galleries, bio, testimonials, forms, and more
 - Pricing cards
 - Inquiry form
 - Clean & modern design
@@ -18,7 +19,7 @@
 - Built with [Livewire](https://livewire.laravel.com/), [Alpine.js](https://github.com/alpinejs/alpine), and [TailwindCSS](https://tailwindcss.com)
 
 ### Private Galleries
-- Password protection with a beautiful login page
+- Password protection with gallery-aware login page
 - Image processing with options for watermark and low-res images
 - Download and like individual images
 - Download a zip of all images or a selection thereof

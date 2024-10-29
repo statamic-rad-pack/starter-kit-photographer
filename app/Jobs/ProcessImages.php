@@ -2,14 +2,14 @@
 
 namespace App\Jobs;
 
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Http\File;
+use Illuminate\Support\Collection;
+use Statamic\Contracts\Assets\Asset;
 use Statamic\Facades\Glide;
 use Statamic\Facades\GlobalSet;
 use Statamic\Globals\Variables;
-use Illuminate\Support\Collection;
-use Statamic\Contracts\Assets\Asset;
-use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ProcessImages implements ShouldQueue
 {
@@ -32,7 +32,7 @@ class ProcessImages implements ShouldQueue
         }
 
         $this->assets
-            ->filter->isImage()
+            ->filter(fn (Asset $asset) => $asset->extensionIsOneOf(['jpg', 'jpeg', 'png', 'webp']))
             ->each($this->processAsset(...));
     }
 

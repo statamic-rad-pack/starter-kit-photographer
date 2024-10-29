@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Facades\Asset;
 use Statamic\Facades\Collection;
@@ -24,30 +25,37 @@ class ComputedPropertiesProvider extends ServiceProvider
         });
 
         Collection::computed('private_galleries', 'processed_images', function ($entry, $value) {
-            $images = $entry->get('assets');
+            return Cache::rememberForever('processed_images', function () use ($entry) {
+                $images = $entry->get('assets');
 
-            if (empty($images)) {
-                return null;
-            }
+                if (empty($images)) {
+                    return null;
+                }
 
-            $shouldProcessImages = $entry->get('watermark') || $entry->get('lowres');
+                $returnProcessedImages = $entry->get('watermark') || $entry->get('lowres');
 
-            if (! $shouldProcessImages) {
-                return $images;
-            }
+                if (! $returnProcessedImages) {
+                    return $images;
+                }
 
-            // TODO: Implement caching.
-            /* Save resources by returning the cached processed images if the selection of images hasn't changed. */
+                $originalImages = collect($images);
 
-            return Asset::query()
-                ->where('container', 'private_galleries')
-                ->where('folder', str(Arr::first($images))->before('/')->append('/processed'))
-                ->whereIn('basename', collect($images)->map(fn ($image) => basename($image))->all())
-                ->get()
-                ->map(fn ($image) => $image->path())
-                ->sortBy(fn ($processed) => collect($images)->search(fn ($original) => basename($processed) === basename($original)))
-                ->values()
-                ->all();
+                $processedImages = Asset::query()
+                    ->where('container', 'private_galleries')
+                    ->where('folder', str(Arr::first($images))->before('/')->append('/processed'))
+                    ->whereIn('basename', $originalImages->map(fn ($image) => basename($image))->all())
+                    ->get()
+                    ->map(fn ($image) => $image->path());
+
+                /* Fall back to the unprocessed image if a processed version doesn't exist. Like GIFs that are never processed. */
+                return $originalImages
+                    ->map(function ($originalImage) use ($processedImages) {
+                        $key = $processedImages->search(fn ($processedImage) => basename($processedImage) === basename($originalImage));
+
+                        return is_numeric($key) ? $processedImages->get($key) : $originalImage;
+                    })
+                    ->all();
+            });
         });
     }
 }

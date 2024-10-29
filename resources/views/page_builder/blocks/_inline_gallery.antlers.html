@@ -1,0 +1,15 @@
+{{#
+	@name Inline Gallery
+	@desc The inline gallery page builder block
+    @set pages.page_builder.inline_gallery
+#}}
+
+<!-- /page_builder/blocks/_inline_gallery.antlers.html -->
+<section class="fluid-container">
+    <x-masonry-grid class="gap-8 sm:grid-cols-2 lg:grid-cols-3 2xl:gap-16">
+        {{ images }}
+            {{ responsive:url alt="{alt}" width="1200" class="w-full {settings:corner_style}" }}
+        {{ /images }}
+    </x-masonry-grid>
+</section>
+<!-- End: /page_builder/blocks/_inline_gallery.antlers.html -->

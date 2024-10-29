@@ -3,6 +3,7 @@ data:
   business_name: 'Louise Millan'
   logo: signature.png
   galleries_layout: offset
+  corner_style: rounded-none
   protected_page_images:
     - switzerland/boris-baldinger-6ogl3xacolm-unsplash.jpg
     - portraits/omid-armin-65jdpsttl-0-unsplash.jpg

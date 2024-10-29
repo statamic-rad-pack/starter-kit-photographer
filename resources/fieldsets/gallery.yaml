@@ -1,0 +1,8 @@
+title: Gallery
+fields:
+  -
+    handle: images
+    field:
+      container: assets
+      type: assets
+      display: Images

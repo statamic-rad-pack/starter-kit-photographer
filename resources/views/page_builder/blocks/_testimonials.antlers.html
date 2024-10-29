@@ -1,0 +1,17 @@
+{{#
+    @name Testimonials
+    @desc The testimonials page builder block.
+    @set page.page_builder.testimonials
+#}}
+
+<!-- /page_builder/blocks/_testimonials.antlers.html -->
+{{# Get the selected entries or query the testimonials collection. #}}
+{{ _entries = (block:testimonials | count)
+    ? (block:testimonials | limit(block:limit))
+    : {%collection:testimonials :limit="block:limit"}
+}}
+
+<section class="fluid-container">
+    <a-components.testimonials-grid :entries="_entries" />
+</section>
+<!-- End: /page_builder/blocks/_testimonials.antlers.html -->

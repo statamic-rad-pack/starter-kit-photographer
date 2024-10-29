@@ -7,7 +7,7 @@
                 @if(count($this->selection))
                     <div class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600">
                         <span>
-                            {{ trans_choice(':count item selected|:count items selected', $this->assetsCount(), ['count' => $this->assetsCount()]) }}
+                            {{ trans_choice(':count item selected|:count items selected', $this->assetsCount, ['count' => $this->assetsCount]) }}
                         </span>
 
                         <button wire:click="resetSelection">
@@ -20,7 +20,7 @@
 
                 <x-download-button
                     url="{{ $this->zipUrl }}"
-                    label="{{ trans_choice('Download :count file|Download :count files', $this->assetsCount(), ['count' => $this->assetsCount()]) }}"
+                    label="{{ trans_choice('Download :count file|Download :count files', $this->assetsCount, ['count' => $this->assetsCount]) }}"
                     class="w-full sm:w-auto text-white px-4 gap-1.5 py-1.5 text-sm {{ count($this->selection) ? 'bg-blue-600 hover:bg-blue-700' : 'bg-black hover:bg-gray-700' }}"
                 />
             @endif

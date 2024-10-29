@@ -1,4 +1,4 @@
-<picture>
+<picture class="overflow-hidden" style="aspect-ratio: {{ $width }}/{{ $height }}">
     @foreach(($breakpoints ?? []) as $breakpoint)
         @foreach($breakpoint->sources() ?? [] as $source)
             @php
@@ -28,5 +28,6 @@
             x-data
             x-statamic-responsive-images
         @endif
+        loading="lazy"
    >
 </picture>

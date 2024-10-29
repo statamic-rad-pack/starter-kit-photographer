@@ -5,11 +5,13 @@ fields:
     field:
       buttons:
         - h1
+        - h2
         - bold
         - italic
         - underline
         - strikethrough
         - anchor
+        - unorderedlist
         - removeformat
       link_noopener: true
       link_noreferrer: true

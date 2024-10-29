@@ -14,6 +14,7 @@ fields:
     field:
       buttons:
         - h1
+        - h2
         - italic
         - anchor
       remove_empty_nodes: true

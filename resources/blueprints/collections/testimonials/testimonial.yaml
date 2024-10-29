@@ -1,0 +1,36 @@
+title: Testimonial
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Name
+          -
+            handle: quote
+            field:
+              buttons:
+                - bold
+                - italic
+                - underline
+                - strikethrough
+                - anchor
+                - removeformat
+              remove_empty_nodes: true
+              type: bard
+              display: Quote
+              bts_defaults: testimonial
+              fullscreen: false
+              allow_source: false
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: 'New Section'

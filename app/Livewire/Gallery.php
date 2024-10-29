@@ -19,39 +19,37 @@ class Gallery extends Component
 
     public array $selection = [];
 
-    #[Computed]
+    public array $likes = [];
+
+    public function mount()
+    {
+        $this->likes = $this->entry->likes->map->id->all();
+    }
+
+    #[Computed(persist: true)]
     public function entry(): Entry
     {
         return \Statamic\Facades\Entry::find($this->id);
     }
 
-    #[Computed]
-    public function assets(array $selection = []): AssetCollection
+    #[Computed(persist: true)]
+    public function assets(): AssetCollection
     {
-        return $this->entry->processed_images
-            ->when($selection, function ($assets) use ($selection) {
-                return $assets->filter(fn ($asset) => in_array($asset->id(), $selection));
-            });
+        return $this->entry->processed_images;
     }
 
     #[Computed]
     public function assetsCount(): int
     {
-        return $this->assets($this->selection)->count();
-    }
-
-    #[Computed]
-    public function likes(): AssetCollection
-    {
-        return $this->entry->likes->map->id;
+        return empty($this->selection) ? $this->assets->count() : count($this->selection);
     }
 
     public function isLiked(string $id): bool
     {
-        return $this->likes->contains($id);
+        return in_array($id, $this->likes);
     }
 
-    #[Computed]
+    #[Computed(persist: true)]
     public function downloadEnabled(): bool
     {
         return $this->entry->download;
@@ -60,7 +58,11 @@ class Gallery extends Component
     #[Computed]
     public function zipUrl(): string
     {
-        return Zip::make($this->assets($this->selection)->all())
+        $assets = empty($this->selection)
+            ? $this->assets->all()
+            : $this->assets->filter(fn ($asset) => in_array($asset->id(), $this->selection))->all();
+
+        return Zip::make($assets)
             ->filename($this->entry->title)
             ->url();
     }
@@ -71,8 +73,8 @@ class Gallery extends Component
         $selection = collect($this->selection);
 
         $this->selection = $selection->contains($id)
-            ? $selection->diff($id)->all()
-            : $selection->push($id)->all();
+            ? $selection->diff($id)->values()->all()
+            : $selection->push($id)->values()->all();
     }
 
     public function resetSelection(): void
@@ -86,12 +88,15 @@ class Gallery extends Component
     #[Renderless]
     public function updateLikes(string $id): void
     {
-        $likes = $this->likes->contains($id)
-            ? $this->likes->diff($id)->all()
-            : $this->likes->push($id)->all();
+        $likes = collect($this->likes);
 
-        $assets = $this->assets($likes)
-            ->map(fn ($asset) => $asset->path())
+        $this->likes = $this->isLiked($id)
+            ? $likes->diff($id)->values()->all()
+            : $likes->push($id)->values()->all();
+
+        $assets = $this->assets
+            ->filter(fn ($asset) => in_array($asset->id(), $this->likes))
+            ->map->path()
             ->unique()
             ->values()
             ->all();

@@ -11,7 +11,7 @@ tabs:
             field:
               type: text
               display: 'Business Name'
-              instructions: 'This name is used throughout the site'
+              instructions: 'The name is used throughout the site'
               validate:
                 - required
               width: 50
@@ -23,7 +23,28 @@ tabs:
               type: assets
               display: Logo
               width: 50
-              instructions: "The logo for your site's navigation"
+              instructions: 'The logo for your main nav'
+          -
+            handle: corner_style
+            field:
+              options:
+                -
+                  key: rounded-none
+                  value: Square
+                -
+                  key: rounded
+                  value: 'Rounded Small'
+                -
+                  key: rounded-xl
+                  value: 'Rounded Medium'
+                -
+                  key: rounded-3xl
+                  value: 'Rounded Large'
+              default: square
+              type: select
+              display: 'Corner Style'
+              instructions: 'Choose square or rounded corners for your photos'
+              width: 50
           -
             handle: galleries_layout
             field:
@@ -37,7 +58,8 @@ tabs:
               default: offset
               type: button_group
               display: 'Galleries Layout'
-              instructions: 'The layout type of the gallery lists'
+              instructions: 'The layout style of the gallery lists'
+              width: 50
           -
             handle: protected_page_images
             field:

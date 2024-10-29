@@ -5,12 +5,22 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title ?? site:name }} / {{ settings:business_name }}</title>
+        {{ if {installed:aerni/advanced-seo} }}
+            {{ seo:head }}
+        {{ elseif {installed:statamic/seo-pro} }}
+            {{ seo_pro:meta }}
+        {{ else }}
+            <title>{{ title ?? site:name }} / {{ settings:business_name }}</title>
+        {{ /if }}
         {{ vite src="resources/js/site.js|resources/css/site.css" }}
         {{ livewire:styles }}
     </head>
 
-    <body x-data x-stack x-cloak class="flex flex-col min-h-screen font-sans antialiased leading-normal text-black bg-gray-50">
+    <body x-data x-cloak class="flex flex-col min-h-screen font-sans antialiased leading-normal text-black bg-gray-50">
+        {{ if {installed:aerni/advanced-seo} }}
+            {{ seo:body }}
+        {{ /if }}
+
         {{ partial:layout/header }}
 
         {{ template_content }}
