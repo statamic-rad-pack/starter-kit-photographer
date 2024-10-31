@@ -25,6 +25,10 @@
 - Download a zip of all images or a selection thereof
 - Gallery zoom
 
+## Live Demo
+
+Check out the [live demo](https://photographer.statamic.city/) of the starter kit. You can also take a look at a [private gallery](https://photographer.statamic.city/private/a14672b1-5f46-4c98-a106-a9fa70d0a482). The password is `secret`.
+
 ## Quick Start
 
 ### 1. Create a new site
