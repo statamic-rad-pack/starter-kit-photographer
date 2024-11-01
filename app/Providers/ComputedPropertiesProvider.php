@@ -25,7 +25,7 @@ class ComputedPropertiesProvider extends ServiceProvider
         });
 
         Collection::computed('private_galleries', 'processed_images', function ($entry, $value) {
-            return Cache::rememberForever('processed_images', function () use ($entry) {
+            return Cache::rememberForever("{$entry->id()}-processed-images", function () use ($entry) {
                 $images = $entry->get('assets');
 
                 if (empty($images)) {
