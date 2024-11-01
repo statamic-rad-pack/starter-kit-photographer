@@ -22,7 +22,7 @@ class ProcessImages implements ShouldQueue
                 watermark: $event->entry->watermark,
                 lowres: $event->entry->lowres,
             ),
-            fn () => Cache::forget('processed_images'),
+            fn () => Cache::forget("{$event->entry->id()}-processed-images"),
         ])->dispatch();
     }
 
