@@ -19,7 +19,8 @@
                 @endif
 
                 <x-download-button
-                    url="{{ $this->zipUrl }}"
+                    as="button"
+                    wire:click="downloadZip"
                     label="{{ trans_choice('Download :count file|Download :count files', $this->assetsCount, ['count' => $this->assetsCount]) }}"
                     class="w-full sm:w-auto text-white px-4 gap-1.5 py-1.5 text-sm {{ count($this->selection) ? 'bg-blue-600 hover:bg-blue-700' : 'bg-black hover:bg-gray-700' }}"
                 />
