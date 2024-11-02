@@ -55,8 +55,16 @@ class Gallery extends Component
         return $this->entry->download;
     }
 
-    #[Computed]
-    public function zipUrl(): string
+    public function downloadZip(): void
+    {
+        if (! $this->downloadEnabled) {
+            return;
+        }
+
+        $this->redirect($this->zipUrl());
+    }
+
+    protected function zipUrl(): string
     {
         $assets = empty($this->selection)
             ? $this->assets->all()
