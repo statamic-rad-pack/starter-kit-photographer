@@ -1,5 +1,9 @@
-<div x-data="gallery" x-cloak class="fluid-container">
-
+<div
+    x-data="gallery"
+    x-cloak
+    class="flex flex-col flex-1 fluid-container"
+    @if($this->assetsProcessing) wire:poll @endif
+>
     <x-gallery-header />
 
     <x-masonry-grid
@@ -12,10 +16,15 @@
         }"
     >
         @foreach($this->assets as $asset)
-            <div wire:key="{{ $asset->id }}" wire:ignore.self>
+            <div
+                wire:key="{{ $asset->id }}"
+                wire:ignore.self
+                class="overflow-hidden bg-gray-100 rounded-md"
+                style="aspect-ratio: {{ $asset->width }} / {{ $asset->height }}"
+            >
                 <livewire:gallery-item
                     :key="$asset->id"
-                    :id="$asset->id"
+                    :id="$this->processedAsset($asset->id)?->id"
                     :downloadEnabled="$this->downloadEnabled"
                     :liked="$this->isLiked($asset->id)"
                 />
@@ -24,7 +33,6 @@
     </x-masonry-grid>
 
     <x-gallery-toolbar />
-
 </div>
 
 @script

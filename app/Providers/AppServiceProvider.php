@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Scopes\ProcessedAsset;
 use Illuminate\Support\ServiceProvider;
+use Statamic\Assets\Asset;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Asset::allowQueryScope(ProcessedAsset::class, 'processed');
     }
 }

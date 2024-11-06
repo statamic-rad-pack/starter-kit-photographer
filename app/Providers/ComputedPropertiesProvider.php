@@ -3,9 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
-use Statamic\Facades\Asset;
+use Illuminate\Support\Str;
+use Statamic\Assets\Asset;
+use Statamic\Facades\Asset as AssetFacade;
 use Statamic\Facades\Collection;
 
 class ComputedPropertiesProvider extends ServiceProvider
@@ -24,38 +25,35 @@ class ComputedPropertiesProvider extends ServiceProvider
             return $entry->password ? 'password' : null;
         });
 
-        Collection::computed('private_galleries', 'processed_images', function ($entry, $value) {
-            return Cache::rememberForever("{$entry->id()}-processed-images", function () use ($entry) {
-                $images = $entry->get('assets');
+        Collection::computed('private_galleries', 'processing_enabled', function ($entry, $value) {
+            return ($entry->watermark || $entry->lowres) ?? false;
+        });
 
-                if (empty($images)) {
-                    return null;
-                }
+        /* Assets don't support computed properties, so we use the augmented hook as a workaround to attach a processed asset to the original. */
+        Asset::hook('augmented', function ($augmented, $next) {
+            /* Only private galleries support processed assets. */
+            if ($this->containerId() !== 'private_galleries') {
+                return $next($augmented);
+            }
 
-                $returnProcessedImages = $entry->get('watermark') || $entry->get('lowres');
+            /* Ensure we don't attach a processed asset to itself. */
+            if (Str::contains($this->folder(), '/processed')) {
+                return $next($augmented);
+            }
 
-                if (! $returnProcessedImages) {
-                    return $images;
-                }
+            /* No need to add the property to unprocessable asset types. */
+            if (! $this->isImage() || $this->extension() === 'gif') {
+                return $next($augmented);
+            }
 
-                $originalImages = collect($images);
+            /* Get the processed version of the asset. */
+            $processedAsset = AssetFacade::query()
+                ->processed(['basename' => $this->basename()])
+                ->first();
 
-                $processedImages = Asset::query()
-                    ->where('container', 'private_galleries')
-                    ->where('folder', str(Arr::first($images))->before('/')->append('/processed'))
-                    ->whereIn('basename', $originalImages->map(fn ($image) => basename($image))->all())
-                    ->get()
-                    ->map(fn ($image) => $image->path());
+            $this->set('processed', $processedAsset);
 
-                /* Fall back to the unprocessed image if a processed version doesn't exist. Like GIFs that are never processed. */
-                return $originalImages
-                    ->map(function ($originalImage) use ($processedImages) {
-                        $key = $processedImages->search(fn ($processedImage) => basename($processedImage) === basename($originalImage));
-
-                        return is_numeric($key) ? $processedImages->get($key) : $originalImage;
-                    })
-                    ->all();
-            });
+            return $next($augmented);
         });
     }
 }

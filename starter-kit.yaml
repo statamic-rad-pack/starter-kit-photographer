@@ -1,9 +1,11 @@
 export_paths:
+  - app/Actions
   - app/Jobs
   - app/Listeners
   - app/Livewire
   - app/Modifiers
   - app/Providers
+  - app/Scopes
   - app/Widgets
   - bootstrap/providers.php
   - config/filesystems.php
