@@ -22,17 +22,6 @@ tabs:
               validate:
                 - image
           -
-            handle: processed_images
-            field:
-              container: private_galleries
-              type: assets
-              display: 'Processed Images'
-              visibility: computed
-              always_save: false
-              if_any:
-                watermark: 'equals true'
-                lowres: 'equals true'
-          -
             handle: likes
             field:
               container: private_galleries

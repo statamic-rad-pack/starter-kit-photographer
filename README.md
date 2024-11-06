@@ -78,6 +78,10 @@ Resizing images is very memory intensive, and so we'd like to make a few recomme
 - You can generate less (or more if you prefer) responsive image variations by editing the `config/statamic/responsive-images/dimension_calculator_threshold` setting. The higher the number, the more variations you'll generate for each image.
 - We recommend having at least 2GB of memory on your server, and be sure to allocate it to php by updating your php.ini file (or equivalent).
 
+### Installing Horizon
+
+To install [Laravel Horizon](https://laravel.com/docs/11.x/horizon), run `php artisan horizon:install` and run `php artisan horizon` (or enable Horizon in Laravel Forge if you're using it) to ensure your queue is handled.
+
 ## Credit
 
 This Starter Kit was commissioned by the Statamic Team and designed/hand-built by [Michael Aerni](https://statamic.com/partners/michael-aerni). He went not just the extra mile, but two.

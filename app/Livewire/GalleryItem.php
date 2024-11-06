@@ -2,17 +2,18 @@
 
 namespace App\Livewire;
 
-use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 use Statamic\Contracts\Assets\Asset;
 
 class GalleryItem extends Component
 {
     #[Locked]
-    public string $id;
+    #[Reactive]
+    public ?string $id = null;
 
     #[Locked]
     public bool $downloadEnabled = false;
@@ -21,10 +22,18 @@ class GalleryItem extends Component
 
     public bool $liked = false;
 
-    #[Computed(persist: true)]
-    public function asset(): Asset
+    #[Computed]
+    public function asset(): ?Asset
     {
-        return \Statamic\Facades\Asset::find($this->id);
+        return $this->id
+            ? \Statamic\Facades\Asset::find($this->id)
+            : null;
+    }
+
+    #[Computed]
+    public function processing(): bool
+    {
+        return is_null($this->asset);
     }
 
     public function select(): void
@@ -45,10 +54,5 @@ class GalleryItem extends Component
         $this->liked = ! $this->liked;
 
         $this->dispatch('update-likes', $this->id);
-    }
-
-    public function render(): View
-    {
-        return view('livewire.gallery-item');
     }
 }
