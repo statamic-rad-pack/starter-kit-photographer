@@ -69,18 +69,26 @@ If you're using [Laravel Herd](https://herd.laravel.com/) (or similar), your sit
 
 ## Image Processing Guidelines
 
-Depending on how you use this site, you may find yourself process a _lot_ of images. It uses Spatie's [Responsive Images](https://statamic.com/addons/spatie/responsive-images) addon to generate multiple image variations to optimize load time for your visitors.
+Depending on how you use this kit, you may find yourself process a _lot_ of images. Processing images is very memory intensive, so we'd like to make a few recommendations for the smoothest experience possible.
 
-Resizing images is very memory intensive, and so we'd like to make a few recommendations for the smoothest experience possible:
+### Types of processing
 
-- We highly recommend using a [Queue](https://laravel.com/docs/queues) to process the images and reduce the amount of work done in any single request. [Laravel Horizon](https://laravel.com/docs/11.x/horizon) makes this very easy, especially if you're using Laravel Forge to manage your server.
-- Down-sample your images before uploading into public galleries — if possible. Setting the width to `1200px` will ensure that they're never bigger than they need to be, thus reducing the memory needed to resize.
-- You can generate less (or more if you prefer) responsive image variations by editing the `config/statamic/responsive-images/dimension_calculator_threshold` setting. The higher the number, the more variations you'll generate for each image.
-- We recommend having at least 2GB of memory on your server, and be sure to allocate it to php by updating your php.ini file (or equivalent).
+- Private galleries generate processed versions of their assets if the `lowres` or `watermark` option is enabled.
+- This kit leverages Spatie's [Responsive Images](https://statamic.com/addons/spatie/responsive-images) addon to optimize the load time for your visitors by generating responsive variants of each image.
 
-### Installing Horizon
+### Recommendations
 
-To install [Laravel Horizon](https://laravel.com/docs/11.x/horizon), run `php artisan horizon:install` and run `php artisan horizon` (or enable Horizon in Laravel Forge if you're using it) to ensure your queue is handled.
+#### Queues
+We highly recommend using a [Queue](https://laravel.com/docs/queues) to process the images and reduce the amount of work done in any single request. [Laravel Horizon](https://laravel.com/docs/11.x/horizon) makes this very easy. You may install Horizon into your project with `composer require laravel/horizon`. Then publish its assets with `php artisan horizon:install`. Then run `php artisan horizon` to start Horizon (or enable Horizon in Laravel Forge if you're using it).
+
+#### Resize images
+Down-sample your images to a max width of `1200px` before uploading. This will ensure that they're never bigger than they need to be on the frontend, thus reducing the memory needed to resize. You can also make use of Statamic's [Process Source Images](https://statamic.dev/image-manipulation#process-source-images) feature to automate this. However, in private galleries you probably want to upload original images to allow your users to download the images at the maximum available resolution.
+
+#### Responsive images
+You can generate less (or more if you prefer) responsive image variations by editing the `dimension_calculator_threshold` setting in `config/statamic/responsive-images`. The higher the number, the more variations you'll generate for each image.
+
+#### Server memory
+We recommend having at least 2GB of memory on your server, and be sure to allocate it to PHP by updating your `php.ini` file (or equivalent).
 
 ## Credit
 
