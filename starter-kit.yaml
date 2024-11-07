@@ -36,6 +36,7 @@ dependencies:
   jacksleight/statamic-bard-texstyle: ^3.3
   jonassiewertsen/statamic-livewire: ^3.8
   livewire/livewire: ^3.5
+  laravel/horizon: ^5.29
   spatie/statamic-responsive-images: ^5.0
   stillat/antlers-components: ^2.3
 modules:
